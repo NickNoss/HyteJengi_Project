@@ -49,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
                     CurrentProgress = CurrentProgress + 25;
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
-                } else {
-                    timerStarted = false;
-                    timerTask.cancel();
                 }
             }
         });
