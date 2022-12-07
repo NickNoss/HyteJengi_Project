@@ -37,6 +37,8 @@
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#673AB7"
+        android:progressTint="#673AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
