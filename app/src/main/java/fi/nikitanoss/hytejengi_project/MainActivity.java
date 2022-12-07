@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -25,23 +26,29 @@ public class MainActivity extends AppCompatActivity {
 
     boolean timerStarted = false;
 
+    private int CurrentProgress = 0;
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressBar = findViewById(R.id.activityProgressBar);
+
         timerText = (TextView) findViewById(R.id.timerTextView);
         startButton = (Button) findViewById(R.id.startBtn);
 
         timer = new Timer();
-    }
 
-    public void startTapped(View v) {
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 if(timerStarted == false) {
                     timerStarted = true;
                     startTimer();
+                    CurrentProgress = CurrentProgress + 25;
+                    progressBar.setProgress(CurrentProgress);
+                    progressBar.setMax(100);
                 } else {
                     timerStarted = false;
                     timerTask.cancel();
