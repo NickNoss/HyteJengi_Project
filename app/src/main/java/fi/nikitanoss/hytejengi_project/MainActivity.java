@@ -1,27 +1,22 @@
 package fi.nikitanoss.hytejengi_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-
-//stepcounter
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -53,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         startButton = (Button) findViewById(R.id.startBtn);
 
         timer = new Timer();
+        startTimer();
+
+        Intent intent = new Intent(this, ExerciseActivity.class);
 
         //stepcounter
         steps =(TextView) findViewById(R.id.steps);
@@ -60,16 +58,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                if(timerStarted == false) {
-                    timerStarted = true;
-                    startTimer();
+                if(timerStarted == true) {
+                    timerStarted = false;
                     CurrentProgress = CurrentProgress + 25;
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
+                    startActivity(intent);
                 }
             }
         });
     }
+
 
     private void startTimer() {
         timerTask = new TimerTask() {
@@ -101,10 +100,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
     }
 
+
     //Methods for stepcounter
     @Override
     protected void onResume(){
         super.onResume();
+        startTimer();
         run = true;
         Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if(countSensor!=null){
