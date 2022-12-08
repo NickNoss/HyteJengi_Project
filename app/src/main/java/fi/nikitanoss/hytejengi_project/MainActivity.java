@@ -2,6 +2,7 @@ package fi.nikitanoss.hytejengi_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -82,5 +83,11 @@ public class MainActivity extends AppCompatActivity {
 
     private String formatTime(int seconds, int minutes, int hours) {
         return String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
+    }
+
+    public void exerciseButtonPressed(View v) {
+        Intent intent = new Intent(this, ExerciseActivity.class);
+        startActivity(intent);
+
     }
 }
