@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ButtonBarLayout;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -102,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
     }
 
-
     //Methods for stepcounter
     @Override
     protected void onResume(){
@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
-
     }
     //ends
 }

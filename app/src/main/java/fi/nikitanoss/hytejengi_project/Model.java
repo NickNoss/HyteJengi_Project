@@ -1,67 +1,72 @@
 package fi.nikitanoss.hytejengi_project;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
-    String page;
-    String per_page;
-    String total;
-    String total_pages;
-    ArrayList<data> data;
+    List<data> data;
 
-    public ArrayList<Model.data> getData() {
+    public List<Model.data> getData() {
         return data;
     }
 
-    public void setData(ArrayList<Model.data> data) {
+    public void setData(List<data> data) {
         this.data = data;
     }
 
-    public class data {
-        String id;
-        String email;
-        String first_name;
-        String last_name;
-        String avatar;
+    public static class data {
+        String name;
+        String type;
+        String muscle;
+        String equipment;
+        String difficulty;
+        String instructions;
 
-        public String getId() {
-            return id;
+        public String getName() {
+            return name;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public String getEmail() {
-            return email;
+        public String getType() {
+            return type;
         }
 
-        public void setEmail(String email) {
-            this.email = email;
+        public void setType(String type) {
+            this.type = type;
         }
 
-        public String getFirst_name() {
-            return first_name;
+        public String getMuscle() {
+            return muscle;
         }
 
-        public void setFirst_name(String first_name) {
-            this.first_name = first_name;
+        public void setMuscle(String muscle) {
+            this.muscle = muscle;
         }
 
-        public String getLast_name() {
-            return last_name;
+        public String getEquipment() {
+            return equipment;
         }
 
-        public void setLast_name(String last_name) {
-            this.last_name = last_name;
+        public void setEquipment(String equipment) {
+            this.equipment = equipment;
         }
 
-        public String getAvatar() {
-            return avatar;
+        public String getDifficulty() {
+            return difficulty;
         }
 
-        public void setAvatar(String avatar) {
-            this.avatar = avatar;
+        public void setDifficulty(String difficulty) {
+            this.difficulty = difficulty;
+        }
+
+        public String getInstructions() {
+            return instructions;
+        }
+
+        public void setInstructions(String instructions) {
+            this.instructions = instructions;
         }
     }
 }
