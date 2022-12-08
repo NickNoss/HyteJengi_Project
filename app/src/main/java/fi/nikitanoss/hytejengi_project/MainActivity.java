@@ -2,7 +2,6 @@ package fi.nikitanoss.hytejengi_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -16,7 +15,15 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+//stepcounter
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     TextView timerText;
     Button startButton;
@@ -30,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
 
+    //variables for stepcounter
+    TextView steps;
+    SensorManager sensorManager;
+    boolean run = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         startButton = (Button) findViewById(R.id.startBtn);
 
         timer = new Timer();
+
+        //stepcounter
+        steps =(TextView) findViewById(R.id.steps);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -85,9 +101,36 @@ public class MainActivity extends AppCompatActivity {
         return String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
     }
 
-    public void exerciseButtonPressed(View v) {
-        Intent intent = new Intent(this, ExerciseActivity.class);
-        startActivity(intent);
+    //Methods for stepcounter
+    @Override
+    protected void onResume(){
+        super.onResume();
+        run = true;
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if(countSensor!=null){
+            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
+        } else{
+            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        run = false;
 
     }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        if(run){
+            steps.setText(String.valueOf(sensorEvent.values[0]));
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+    //ends
 }
