@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         startButton = (Button) findViewById(R.id.startBtn);
 
         timer = new Timer();
-        startTimer();
 
         Intent intent = new Intent(this, ExerciseActivity.class);
 
@@ -58,14 +57,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                if(timerStarted == true) {
-                    timerStarted = false;
+                    startActivity(intent);
                     CurrentProgress = CurrentProgress + 25;
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
-                    startActivity(intent);
                 }
-            }
+
         });
     }
 
@@ -84,6 +81,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         };
         timer.scheduleAtFixedRate(timerTask, 0, 1000);
+    }
+
+    private void stopTimer() {
+        timerStarted = false;
+        timerTask.cancel();
     }
 
     private String getTimerText() {
@@ -105,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onResume(){
         super.onResume();
-        startTimer();
         run = true;
         Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if(countSensor!=null){
@@ -113,13 +114,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } else{
             Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
         }
+        startTimer();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         run = false;
-
+        stopTimer();
     }
 
     @Override

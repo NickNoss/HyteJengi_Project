@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LoginActivity extends AppCompatActivity {
 
     public final static String EXTRA_USERNAME = "com.example.test.USERNAME";
-    public final static String EXTRA_PASSWORD = "com.example.test.PASWORD";
+    public final static String EXTRA_PASSWORD = "com.example.test.PASSWORD";
     private EditText usernameTextField, passwordTextField;
     private Button loginButton;
 
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(usernameTextField.getText().toString().equals("admin") && passwordTextField.getText().toString().equals("admin")) {
+                if(usernameTextField.getText().toString().equals("") && passwordTextField.getText().toString().equals("")) {
                     //correct
                     startActivity(intent);
                     Toast.makeText(LoginActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
