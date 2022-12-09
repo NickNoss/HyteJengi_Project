@@ -14,12 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import android.content.SharedPreferences;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+public class MainActivity extends AppCompatActivity{
 
     TextView timerText;
     Button startButton;
@@ -34,9 +34,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ProgressBar progressBar;
 
     //variables for stepcounter
-    TextView steps;
-    SensorManager sensorManager;
-    boolean run = false;
+    private TextView textView;
+    private double MagnitudePrev = 0;
+    private Integer stepCount = 0;
+    //end
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         Intent intent = new Intent(this, ExerciseActivity.class);
 
-        //stepcounter
-        steps =(TextView) findViewById(R.id.steps);
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -65,6 +64,36 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 }
 
         });
+        //STEPCOUNTER
+        textView = findViewById(R.id.steps);
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        SensorEventListener stepDetector = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent) {
+                if (sensorEvent!= null){
+                    float x_suunta = sensorEvent.values[0];
+                    float y_suunta = sensorEvent.values[1];
+                    float z_suunta = sensorEvent.values[2];
+
+                    double Magnitude = Math.sqrt(x_suunta*x_suunta + y_suunta*y_suunta + z_suunta*z_suunta);
+                    double MD = Magnitude - MagnitudePrev;
+                    MagnitudePrev = Magnitude;
+
+                    if (MD > 3){
+                        stepCount++;
+                    }
+                    textView.setText(stepCount.toString());
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i) {
+            }
+        };
+        sensorManager.registerListener(stepDetector, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        //end
     }
 
 
@@ -103,36 +132,33 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
     }
 
-    //Methods for stepcounter
-    @Override
-    protected void onResume(){
-        super.onResume();
-        run = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if(countSensor!=null){
-            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
-        } else{
-            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
-        }
-        startTimer();
-    }
 
-    @Override
+    //Methods for stepcounter
     protected void onPause() {
         super.onPause();
-        run = false;
-        stopTimer();
+
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.putInt("stepCount", stepCount);
+        editor.apply();
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        if(run){
-            steps.setText(String.valueOf(sensorEvent.values[0]));
-        }
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.putInt("stepCount", stepCount);
+        editor.apply();
     }
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        stepCount = sharedPreferences.getInt("stepCount", 0);
     }
     //ends
 }
