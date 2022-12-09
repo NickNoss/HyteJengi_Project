@@ -8,13 +8,13 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,19 +24,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     TextView timerText;
     Button startButton;
 
+    // timer initiation
     Timer timer;
     TimerTask timerTask;
     Double time = 0.0;
 
     boolean timerStarted = false;
 
+    // progress bar initiation
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
 
-    //variables for stepcounter
+    // variables for stepcounter
     TextView steps;
     SensorManager sensorManager;
     boolean run = false;
+
+    // settings
+    private static final String TAG = "MyActivity";
+    public static final String EXTRA_NAME = "Name";
+    private ArrayAdapter<Settings> listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         timer = new Timer();
 
-        Intent intent = new Intent(this, ExerciseActivity.class);
+        Intent exercise = new Intent(this, ExerciseActivity.class);
 
         //stepcounter
         steps =(TextView) findViewById(R.id.steps);
@@ -58,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                    startActivity(intent);
+                    startActivity(exercise);
                     CurrentProgress = CurrentProgress + 25;
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
@@ -66,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         });
     }
+
 
 
     private void startTimer() {

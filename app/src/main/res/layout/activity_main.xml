@@ -87,44 +87,31 @@
         app:layout_constraintVertical_bias="0.35000002"
         app:srcCompat="@drawable/clock" />
 
-    <Button
-        android:id="@+id/buttonForExercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="exerciseButtonPressed"
-        android:text="ButtonForExerciseActivity"
-        app:layout_constraintBottom_toTopOf="@+id/activityProgressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startBtn" />
-
     <TextView
 
         android:id="@+id/steps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="0"
         android:textColor="@color/black"
         android:textSize="100px"
-        android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.19999999" />
 
     <TextView
         android:id="@+id/tvSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:text="Steps"
         android:textColor="@color/black"
         android:textSize="50px"
-        android:text="Steps"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
