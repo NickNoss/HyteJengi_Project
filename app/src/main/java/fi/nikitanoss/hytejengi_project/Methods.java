@@ -3,10 +3,9 @@ package fi.nikitanoss.hytejengi_project;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Query;
 
 public interface Methods {
-    @Headers("X-Api-Key")
+    @Headers("X-Api-Key" + "PNaMlfXN+zoH+59tQrauWw==TY47R7TCS4r7Wmrr")
     @GET("exercises?muscle=biceps")
     Call<Model> getAllData();
 }

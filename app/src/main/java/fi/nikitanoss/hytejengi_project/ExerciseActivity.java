@@ -9,6 +9,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +48,7 @@ public class ExerciseActivity extends AppCompatActivity {
                         Log.e(TAG, "onResponse: code " + response.code());
 
                         ArrayList<Model.data> data = response.body().getData();
-                        
+
                         for (Model.data data1 : data) {
                             Log.e(TAG, "onResponse: All names " + data1.getName());
                             exerName.setText(data1.getName());
@@ -77,9 +82,14 @@ public class ExerciseActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
+                    Log.e(TAG, "onResponse: " + myResponse);
+
                     /*
-                    Gson gson = new Gson();
-                    Model modelResult = gson.fromJson(response.body().string(), Model.class);
+                    ArrayList<Model.data> data1 = modelResult.getData();
+
+                    for (Model.data data : data1) {
+                        Log.e(TAG, "onResponse: " + data.getName());
+                    }
                      */
 
                     ExerciseActivity.this.runOnUiThread(new Runnable() {

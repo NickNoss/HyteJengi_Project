@@ -1,15 +1,15 @@
 package fi.nikitanoss.hytejengi_project;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Model {
-    List<data> data;
+    ArrayList<data> data;
 
-    public List<Model.data> getData() {
+    public ArrayList<Model.data> getData() {
         return data;
     }
 
-    public void setData(List<data> data) {
+    public void setData(ArrayList<data> data) {
         this.data = data;
     }
 
