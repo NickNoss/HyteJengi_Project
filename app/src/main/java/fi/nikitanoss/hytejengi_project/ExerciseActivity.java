@@ -9,13 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class ExerciseActivity extends AppCompatActivity {
 
@@ -36,14 +30,14 @@ public class ExerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(mainIntent);
-                super.startTimer();
             }
         });
+    }}
 
 
-        result = (TextView) findViewById(R.id.exerciseName);
-        getBtn = (Button) findViewById(R.id.kokeiluButton);
-        getBtn.setOnClickListener(new View.OnClickListener() {
+        //result = (TextView) findViewById(R.id.exerciseName);
+        //getBtn = (Button) findViewById(R.id.kokeiluButton);
+        /*getBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getWebservice();

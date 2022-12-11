@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity{
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                     startActivity(exerciseIntent);
-                    CurrentProgress = CurrentProgress + 25;
+                    CurrentProgress += 25;
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
                     stopTimer();
@@ -135,29 +135,34 @@ public class MainActivity extends AppCompatActivity{
     //Methods for stepcounter
     protected void onPause() {
         super.onPause();
-
+        stopTimer();
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.putInt("stepCount", stepCount);
+        editor.apply();
+        editor.putInt("CurrentProgress", CurrentProgress);
         editor.apply();
     }
 
     protected void onStop() {
         super.onStop();
-
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.putInt("stepCount", stepCount);
         editor.apply();
+        editor.putInt("CurrentProgress", CurrentProgress);
+        editor.apply();
     }
 
     protected void onResume() {
         super.onResume();
-
+        startTimer();
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         stepCount = sharedPreferences.getInt("stepCount", 0);
+        CurrentProgress = sharedPreferences.getInt("CurrentProgress", CurrentProgress);
+        progressBar.setProgress(sharedPreferences.getInt("CurrentProgress", 0));
     }
     //ends
 }
