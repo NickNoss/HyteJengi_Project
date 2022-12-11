@@ -1,16 +1,13 @@
 package fi.nikitanoss.hytejengi_project;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
@@ -22,7 +19,7 @@ import okhttp3.Response;
 
 public class ExerciseActivity extends AppCompatActivity {
 
-    private Button getBtn;
+    private Button getBtn, readyBtn;
     private TextView result;
     private OkHttpClient client;
 
@@ -31,6 +28,19 @@ public class ExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
+        // Get back to main after exercise
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        readyBtn = findViewById(R.id.rdyBtn);
+        readyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(mainIntent);
+                super.startTimer();
+            }
+        });
+
+
         result = (TextView) findViewById(R.id.exerciseName);
         getBtn = (Button) findViewById(R.id.kokeiluButton);
         getBtn.setOnClickListener(new View.OnClickListener() {
@@ -65,9 +75,7 @@ public class ExerciseActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             String json = response.body().string();
-                            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                            Model[] exercises = gson.fromJson(json, Model[].class);
-                            result.setText(exercises.toString());
+                            result.setText(json);
 
                         } catch (IOException ioe) {
                             result.setText("Error during get body");

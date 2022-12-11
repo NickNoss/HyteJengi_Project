@@ -1,7 +1,7 @@
 package fi.nikitanoss.hytejengi_project;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,13 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import android.content.SharedPreferences;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -51,16 +49,17 @@ public class MainActivity extends AppCompatActivity{
 
         timer = new Timer();
 
-        Intent intent = new Intent(this, ExerciseActivity.class);
+        Intent exerciseIntent = new Intent(this, ExerciseActivity.class);
 
 
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                    startActivity(intent);
+                    startActivity(exerciseIntent);
                     CurrentProgress = CurrentProgress + 25;
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
+                    stopTimer();
                 }
 
         });
