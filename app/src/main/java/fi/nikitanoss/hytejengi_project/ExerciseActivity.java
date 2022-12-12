@@ -19,7 +19,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private TextView result;
     private OkHttpClient client;
 
-    private int random = new Random().nextInt(5); // randomizer initialization
+    private int random = new Random().nextInt(6); // randomizer initialization
 
 
     @Override

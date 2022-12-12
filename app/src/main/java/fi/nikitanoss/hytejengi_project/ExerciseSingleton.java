@@ -31,6 +31,10 @@ public class ExerciseSingleton {
                 "Jump your feet up to your palms by hinging at the waist. Get your feet as close to your hands as you can get, landing them outside your hands if necessary.\n" +
                 "Stand up straight, bringing your arms above your head, and jump.\n" +
                 "This is one rep."));
+
+        exercises.add(new Exercise("Standing quad stretch", 5, "Stand behind a chair with your legs about shoulder-width apart. Put one hand on the chair for balance.\n" +
+                "On the opposite side, lift your foot behind you and grab it with your free hand, keeping your bent knee pointing straight to the floor.\n" +
+                "Avoid bending forward, and try not to lock the knee of your standing leg. Pull gently on the leg until you feel the thigh stretch. Hold it for 10 to 30 seconds."));
     }
 
     public ArrayList<Exercise> getExercises(){ return this.exercises; }

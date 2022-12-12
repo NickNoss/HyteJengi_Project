@@ -11,10 +11,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
-
-
-    private EditText usernameTextField, passwordTextField;
-    private Button loginButton;
+    
+    EditText username, password;
+    Button login, register;
+    SharedPreferences preferences;
 
 
     @Override
@@ -23,39 +23,35 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        this.usernameTextField = findViewById(R.id.usernameEditText);
-        this.passwordTextField = findViewById(R.id.passwordEditText);
-        this.loginButton = findViewById(R.id.loginButton);
-        Intent MainIntent = new Intent(this, MainActivity.class);
-        String username = usernameTextField.getText().toString();
-        String password = passwordTextField.getText().toString();
+        username = findViewById(R.id.usernameEditText);
+        password = findViewById(R.id.passwordEditText);
+        login = findViewById(R.id.loginButton);
+        register = findViewById(R.id.register);
 
-        SharedPreferences sp=getSharedPreferences("Login", MODE_PRIVATE);
-        SharedPreferences.Editor Editor=sp.edit();
-        SharedPreferences shared=this.getSharedPreferences("Login", MODE_PRIVATE);
+        preferences = getSharedPreferences("Userinfo", 0);
 
-
-        loginButton.setOnClickListener(new View.OnClickListener(){
-
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                String usernameValue = username.getText().toString();
+                String passwordValue = password.getText().toString();
 
-                String unm = shared.getString("User", username);
-                String pass = shared.getString("PassW", password);
-                if(unm.isEmpty()&&pass.isEmpty()) {
-                    Editor.putString("User",username);
-                    Editor.putString("PassW",password);
-                    Editor.commit();
-                    startActivity(MainIntent);
-                    Toast.makeText(LoginActivity.this, "L SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                } else if (unm.equals(usernameTextField.getText().toString())&& pass.equals(passwordTextField.getText().toString())) {
-                    Toast.makeText(LoginActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                    startActivity(MainIntent);
-                } else {
-                    Toast.makeText(LoginActivity.this, "LOGIN FAILED", Toast.LENGTH_SHORT).show();
+                String registeredUsername = preferences.getString("username", "");
+                String registeredPassword = preferences.getString("username", "");
+
+                if (usernameValue.equals(registeredUsername) && passwordValue.equals(registeredPassword)) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });
-    }
 
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
