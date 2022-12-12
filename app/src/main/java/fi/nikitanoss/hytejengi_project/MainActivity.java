@@ -9,6 +9,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,6 +20,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity{
+
+    // menu button
+    private ImageButton menuBtn;
 
     // variables for data resetting at midnight
     Calendar calendar = Calendar.getInstance();
@@ -48,6 +52,15 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        menuBtn = (ImageButton) findViewById(R.id.menuBtn);
+        Intent menuIntent = new Intent(MainActivity.this, SettingsActivity.class);
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(menuIntent);
+            }
+        });
 
         progressBar = findViewById(R.id.activityProgressBar);
 
