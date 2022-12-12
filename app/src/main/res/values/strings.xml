@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">HyteJengi_Project</string>
+
+    <string-array name="menu_options">
+        <item>User settings</item>
+        <item>My activity</item>
+        <item>About</item>
+    </string-array>
+
 </resources>
