@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import okhttp3.OkHttpClient;
 
@@ -16,6 +17,8 @@ public class ExerciseActivity extends AppCompatActivity {
     private Button getBtn, readyBtn;
     private TextView result;
     private OkHttpClient client;
+
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -32,6 +35,9 @@ public class ExerciseActivity extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
+
+        recyclerView = findViewById(R.id.recyclerView);
+
     }}
 
 

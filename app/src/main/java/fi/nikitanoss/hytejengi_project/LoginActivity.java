@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     private EditText usernameTextField, passwordTextField;
     private Button loginButton;
 

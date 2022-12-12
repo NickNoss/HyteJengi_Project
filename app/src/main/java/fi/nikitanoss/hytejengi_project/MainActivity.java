@@ -14,10 +14,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity{
+
+    Calendar calendar = Calendar.getInstance();
+    int hour = calendar.get(Calendar.HOUR_OF_DAY);
 
     TextView timerText;
     Button startButton;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity{
     private Integer stepCount = 0;
     //end
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,10 @@ public class MainActivity extends AppCompatActivity{
 
         Intent exerciseIntent = new Intent(this, ExerciseActivity.class);
 
+        if (hour == 22) {
+            CurrentProgress = 0;
+            stepCount = 0;
+        }
 
 
         startButton.setOnClickListener(new View.OnClickListener(){
@@ -143,6 +152,10 @@ public class MainActivity extends AppCompatActivity{
         editor.apply();
         editor.putInt("CurrentProgress", CurrentProgress);
         editor.apply();
+        if (hour == 22) {
+            CurrentProgress = 0;
+            stepCount = 0;
+        }
     }
 
     protected void onStop() {
@@ -154,6 +167,10 @@ public class MainActivity extends AppCompatActivity{
         editor.apply();
         editor.putInt("CurrentProgress", CurrentProgress);
         editor.apply();
+        if (hour == 22) {
+            CurrentProgress = 0;
+            stepCount = 0;
+        }
     }
 
     protected void onResume() {
@@ -163,6 +180,10 @@ public class MainActivity extends AppCompatActivity{
         stepCount = sharedPreferences.getInt("stepCount", 0);
         CurrentProgress = sharedPreferences.getInt("CurrentProgress", CurrentProgress);
         progressBar.setProgress(sharedPreferences.getInt("CurrentProgress", 0));
+        if (hour == 22) {
+            CurrentProgress = 0;
+            stepCount = 0;
+        }
     }
     //ends
 }
