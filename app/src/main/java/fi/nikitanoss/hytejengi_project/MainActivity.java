@@ -20,18 +20,20 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity{
 
+    // variables for data resetting at midnight
     Calendar calendar = Calendar.getInstance();
-    int hour = calendar.get(Calendar.HOUR_OF_DAY);
+    int hour = calendar.get(Calendar.HOUR_OF_DAY); // returns hour in a 24-hour format (i.e. 0-23)
 
     TextView timerText;
     Button startButton;
 
+    // timer variables
     Timer timer;
     TimerTask timerTask;
     Double time = 0.0;
-
     boolean timerStarted = false;
 
+    // variables for progressbar
     private int CurrentProgress = 0;
     private ProgressBar progressBar;
 

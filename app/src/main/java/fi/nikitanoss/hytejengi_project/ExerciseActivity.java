@@ -8,7 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Random;
 
 import okhttp3.OkHttpClient;
 
@@ -18,13 +19,28 @@ public class ExerciseActivity extends AppCompatActivity {
     private TextView result;
     private OkHttpClient client;
 
-    private RecyclerView recyclerView;
+    private int random = new Random().nextInt(5); // randomizer initialization
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
+        // initializing TextViews
+        TextView nameTV = findViewById(R.id.nameTV);
+        TextView repsTV = findViewById(R.id.repsTV);
+        TextView infoTV = findViewById(R.id.infoTV);
+
+        // getting data from singleton array(randomized)
+        String name = ExerciseSingleton.getInstance().getExercise(random).toString();
+        String reps = ExerciseSingleton.getInstance().getExercise(random).getReps();
+        String info = ExerciseSingleton.getInstance().getExercise(random).getInstructions();
+
+        // setting exercises to show on screen
+        nameTV.setText(name);
+        repsTV.setText(reps);
+        infoTV.setText(info);
 
         // Get back to main after exercise
         Intent mainIntent = new Intent(this, MainActivity.class);
@@ -36,7 +52,6 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.recyclerView);
 
     }}
 
