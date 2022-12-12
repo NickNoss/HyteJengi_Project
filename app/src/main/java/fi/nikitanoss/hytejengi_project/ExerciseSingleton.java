@@ -49,6 +49,13 @@ public class ExerciseSingleton {
         exercises.add(new Exercise("Plank to Downward dog", 30, "Get into a high plank position, with your hands stacked underneath your shoulders and your feet close together.\n" +
                 "Keeping your core engaged and your hands and feet stationary, pike your hips up and back into the Downward Dog pose. Your body should form a triangle with the ground. Keep your neck neutral. Your gaze should be directed toward your feet.\n" +
                 "Hold here for a second, then return to the plank. Repeat."));
+
+        exercises.add(new Exercise("Glute bridge", 10-15, "Lie on your back with your knees bent, feet flat on the floor hip-width apart, and arms at your sides. This is the starting position.\n" +
+                "Squeeze your glutes and abs, and push through your heels to lift your hips a few inches off the floor until your body forms a straight line from your shoulders to your knees.\n" +
+                "Hold for a second and then slowly lower your hips to return to the starting position. This is 1 rep."));
+
+        exercises.add(new Exercise("Cat-Cow", 5-10, "Start on all fours with your shoulders over your wrists and hips over knees. Take a slow inhale and, on the exhale, round your spine and\n" +
+                "drop your head toward the floor (this is the cat posture). Inhale and lift your head, chest, and tailbone toward the ceiling as you arch your back for cow. Continue this pattern for 5 to 10 breaths."));
     }
 
     public ArrayList<Exercise> getExercises(){ return this.exercises; }

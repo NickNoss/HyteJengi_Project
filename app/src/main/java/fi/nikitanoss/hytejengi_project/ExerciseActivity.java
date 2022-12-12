@@ -21,7 +21,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private TextView result;
     private OkHttpClient client;
 
-    private int random = new Random().nextInt(10); // randomizer initialization
+    private int random = new Random().nextInt(12); // randomizer initialization
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
