@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity{
                 }
 
         });
-        //STEPCOUNTER
+        // STEPCOUNTER
         textView = findViewById(R.id.steps);
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    //Methods for stepcounter
     protected void onPause() {
         super.onPause();
         stopTimer();
@@ -187,5 +186,4 @@ public class MainActivity extends AppCompatActivity{
             stepCount = 0;
         }
     }
-    //ends
 }
