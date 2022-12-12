@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (usernameValue.equals(registeredUsername) && passwordValue.equals(registeredPassword)) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Username or password incorrect", Toast.LENGTH_SHORT).show();
                 }
             }
         });
