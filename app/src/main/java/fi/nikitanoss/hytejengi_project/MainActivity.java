@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity{
             stepCount = 0;
         }
 
-
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                     startActivity(exerciseIntent);
