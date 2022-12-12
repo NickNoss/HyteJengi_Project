@@ -29,7 +29,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
         // initializing TextViews
         TextView nameTV = findViewById(R.id.nameTV);
-        TextView repsTV = findViewById(R.id.repsTV);
         TextView infoTV = findViewById(R.id.infoTV);
 
         // getting data from singleton array(randomized)
@@ -39,7 +38,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
         // setting exercises to show on screen
         nameTV.setText(name);
-        repsTV.setText(reps);
         infoTV.setText(info);
 
         // Get back to main after exercise
