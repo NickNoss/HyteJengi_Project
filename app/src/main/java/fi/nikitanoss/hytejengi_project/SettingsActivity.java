@@ -18,6 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
     private ImageButton menuBtn;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
                     startActivityIfNeeded(openMainActivity, 0);
                 } else if(position==2){
                     startActivity(new Intent(SettingsActivity.this, ExerciseActivity.class));
+
                 } else {
                     startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
                 }

@@ -25,8 +25,7 @@ public class MainActivity extends AppCompatActivity{
     private ImageButton menuBtn;
 
     // variables for data resetting at midnight
-    Calendar calendar = Calendar.getInstance();
-
+    final int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
     TextView timerText;
     Button startButton;
@@ -73,6 +72,12 @@ public class MainActivity extends AppCompatActivity{
 
         if (timerStarted == false) {
             startTimer();
+        }
+
+        if (currentHour == 0) {
+            stepCount = 0;
+            CurrentProgress = 0;
+            progressBar.setProgress(0);
         }
 
         startButton.setOnClickListener(new View.OnClickListener(){
