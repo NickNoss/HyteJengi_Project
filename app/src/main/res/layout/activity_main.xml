@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="exerciseButtonPressed"
-    android:background="@color/white"
+    android:background="@color/teal_200"
     tools:context=".MainActivity">
 
     <TextView
@@ -26,15 +26,16 @@
         android:id="@+id/startBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#673AB7"
         android:fontFamily="sans-serif-black"
         android:text="Start"
-        android:backgroundTint="#673AB7"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"
+        app:layout_constraintVertical_bias="0.849"
         app:toggleCheckedStateOnClick="false" />
 
     <ProgressBar
@@ -64,30 +65,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
 
-    <TextView
-        android:id="@+id/timerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="00:00:00"
-        android:textColor="#673AB7"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="133dp"
-        android:layout_height="131dp"
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_gravity="fill"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardMaxElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325"
-        app:srcCompat="@drawable/clock" />
+        app:layout_constraintVertical_bias="0.564">
+
+
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="00:00:00"
+            android:textColor="#673AB7"
+            android:textSize="60sp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#673AB7"
+            android:textSize="20sp"
+            android:text="Time since last exercise"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="180dp"/>
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="133dp"
+            android:layout_height="131dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.325"
+            app:srcCompat="@drawable/clock" />
+    </androidx.cardview.widget.CardView>
+
+
 
     <TextView
         android:id="@+id/steps"
