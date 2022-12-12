@@ -68,11 +68,12 @@ public class MainActivity extends AppCompatActivity{
         startButton = (Button) findViewById(R.id.startBtn);
 
         timer = new Timer();
+
+        Intent exerciseIntent = new Intent(this, ExerciseActivity.class);
+
         if (timerStarted == false) {
             startTimer();
         }
-
-        Intent exerciseIntent = new Intent(this, ExerciseActivity.class);
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
