@@ -41,7 +41,9 @@ public class SettingsActivity extends AppCompatActivity {
                 if(position==0){
 
                 } else if(position==1){
-                    startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+                    Intent openMainActivity = new Intent(SettingsActivity.this, MainActivity.class);
+                    openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivityIfNeeded(openMainActivity, 0);
                 } else if(position==2){
                     startActivity(new Intent(SettingsActivity.this, ExerciseActivity.class));
                 } else {

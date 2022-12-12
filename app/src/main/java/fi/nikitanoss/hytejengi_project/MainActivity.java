@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
 
     // variables for data resetting at midnight
     Calendar calendar = Calendar.getInstance();
-    int hour = calendar.get(Calendar.HOUR_OF_DAY); // returns hour in a 24-hour format (i.e. 0-23)
+
 
     TextView timerText;
     Button startButton;
@@ -66,24 +66,23 @@ public class MainActivity extends AppCompatActivity{
 
         timerText = (TextView) findViewById(R.id.timerTextView);
         startButton = (Button) findViewById(R.id.startBtn);
-
-        timer = new Timer();
         if (timerStarted == false) {
             startTimer();
         }
 
+        timer = new Timer();
+
+
         Intent exerciseIntent = new Intent(this, ExerciseActivity.class);
 
-        if (hour == 20) {
-            CurrentProgress = 0;
-            progressBar.setProgress(0);
-            stepCount = 0;
-        }
 
         startButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                     startActivity(exerciseIntent);
                     CurrentProgress += 25;
+                    if (stepCount >= 10000) {
+                        CurrentProgress += 25;
+                    }
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
                 }
@@ -167,10 +166,8 @@ public class MainActivity extends AppCompatActivity{
         editor.apply();
         editor.putInt("CurrentProgress", CurrentProgress);
         editor.apply();
-        if (hour == 22) {
-            CurrentProgress = 0;
-            stepCount = 0;
-        }
+
+
     }
 
     protected void onStop() {
@@ -182,10 +179,7 @@ public class MainActivity extends AppCompatActivity{
         editor.apply();
         editor.putInt("CurrentProgress", CurrentProgress);
         editor.apply();
-        if (hour == 22) {
-            CurrentProgress = 0;
-            stepCount = 0;
-        }
+
     }
 
     protected void onResume() {
@@ -194,9 +188,9 @@ public class MainActivity extends AppCompatActivity{
         stepCount = sharedPreferences.getInt("stepCount", 0);
         CurrentProgress = sharedPreferences.getInt("CurrentProgress", CurrentProgress);
         progressBar.setProgress(sharedPreferences.getInt("CurrentProgress", 0));
-        if (hour == 22) {
-            CurrentProgress = 0;
-            stepCount = 0;
-        }
+    }
+
+    protected void onStart() {
+        super.onStart();
     }
 }

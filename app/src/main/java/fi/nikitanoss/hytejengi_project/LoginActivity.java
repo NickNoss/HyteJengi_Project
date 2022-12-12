@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                 String passwordValue = password.getText().toString();
 
                 String registeredUsername = preferences.getString("username", "");
-                String registeredPassword = preferences.getString("username", "");
+                String registeredPassword = preferences.getString("password", "");
 
                 if (usernameValue.equals(registeredUsername) && passwordValue.equals(registeredPassword)) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
