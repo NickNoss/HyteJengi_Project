@@ -39,7 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
-
+                    startActivity(new Intent(SettingsActivity.this, MyProfile.class));
                 } else if(position==1){
                     Intent openMainActivity = new Intent(SettingsActivity.this, MainActivity.class);
                     openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
