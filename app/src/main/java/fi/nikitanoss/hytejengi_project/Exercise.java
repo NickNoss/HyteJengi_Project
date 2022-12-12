@@ -12,6 +12,8 @@ public class Exercise {
         this.instructions = instructions;
     }
 
+    public String getName() { return name; }
+
     public String toString() { return name + "\nReps: " + reps; }
 
     public String getReps() { return Integer.toString(reps); }
