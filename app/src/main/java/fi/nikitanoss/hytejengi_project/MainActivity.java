@@ -68,11 +68,15 @@ public class MainActivity extends AppCompatActivity{
         startButton = (Button) findViewById(R.id.startBtn);
 
         timer = new Timer();
+        if (timerStarted == false) {
+            startTimer();
+        }
 
         Intent exerciseIntent = new Intent(this, ExerciseActivity.class);
 
-        if (hour == 22) {
+        if (hour == 20) {
             CurrentProgress = 0;
+            progressBar.setProgress(0);
             stepCount = 0;
         }
 
@@ -82,7 +86,6 @@ public class MainActivity extends AppCompatActivity{
                     CurrentProgress += 25;
                     progressBar.setProgress(CurrentProgress);
                     progressBar.setMax(100);
-                    stopTimer();
                 }
 
         });
@@ -157,7 +160,6 @@ public class MainActivity extends AppCompatActivity{
 
     protected void onPause() {
         super.onPause();
-        stopTimer();
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
@@ -188,7 +190,6 @@ public class MainActivity extends AppCompatActivity{
 
     protected void onResume() {
         super.onResume();
-        startTimer();
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         stepCount = sharedPreferences.getInt("stepCount", 0);
         CurrentProgress = sharedPreferences.getInt("CurrentProgress", CurrentProgress);
