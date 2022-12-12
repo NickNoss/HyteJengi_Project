@@ -3,6 +3,7 @@ package fi.nikitanoss.hytejengi_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,8 +20,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private TextView result;
     private OkHttpClient client;
 
-    private int random = new Random().nextInt(6); // randomizer initialization
-
+    private int random = new Random().nextInt(10); // randomizer initialization
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class ExerciseActivity extends AppCompatActivity {
         TextView infoTV = findViewById(R.id.infoTV);
 
         // getting data from singleton array(randomized)
-        String name = ExerciseSingleton.getInstance().getExercise(random).toString();
+        String name = ExerciseSingleton.getInstance().getExercise(random).getName();
         String reps = ExerciseSingleton.getInstance().getExercise(random).getReps();
         String info = ExerciseSingleton.getInstance().getExercise(random).getInstructions();
 
