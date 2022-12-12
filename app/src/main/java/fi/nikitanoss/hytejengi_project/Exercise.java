@@ -12,11 +12,11 @@ public class Exercise {
         this.instructions = instructions;
     }
 
-    public String getName() { return name; }
+    public String getName() { return "Name: " + name; }
 
     public String toString() { return name + "\nReps: " + reps; }
 
-    public String getReps() { return Integer.toString(reps); }
+    public String getReps() { return "Reps: " + Integer.toString(reps); }
 
     public String getInstructions() { return instructions; }
 
