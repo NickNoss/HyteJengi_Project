@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
 
-
+    private ImageButton menuBtn;
 
 
     @Override
@@ -41,11 +42,19 @@ public class SettingsActivity extends AppCompatActivity {
 
                 } else if(position==1){
                     startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-                } else if(position==1){
+                } else if(position==2){
                     startActivity(new Intent(SettingsActivity.this, ExerciseActivity.class));
                 } else {
                     startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
                 }
+            }
+        });
+
+        menuBtn = (ImageButton) findViewById(R.id.menuBtn);
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

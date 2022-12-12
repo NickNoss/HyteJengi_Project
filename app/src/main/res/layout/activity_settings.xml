@@ -44,4 +44,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
 
+    <ImageButton
+        android:id="@+id/menuBtn"
+        android:layout_width="69dp"
+        android:layout_height="64dp"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#AA00FF"
+        android:contentDescription="Menu"
+        app:tint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/headerTextView"
+        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,9 +3,9 @@ package fi.nikitanoss.hytejengi_project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import okhttp3.OkHttpClient;
 public class ExerciseActivity extends AppCompatActivity {
 
     private Button getBtn, readyBtn;
+    private ImageButton menuBtn;
     private TextView result;
     private OkHttpClient client;
 
@@ -49,6 +50,15 @@ public class ExerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(mainIntent);
+            }
+        });
+
+        menuBtn = (ImageButton) findViewById(R.id.menuBtn);
+        Intent menuIntent = new Intent(ExerciseActivity.this, SettingsActivity.class);
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(menuIntent);
             }
         });
 
