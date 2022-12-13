@@ -23,6 +23,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private Button  readyBtn;
     private ImageButton menuBtn;
 
+    //
     private int random = new Random().nextInt(12); // randomizer initialization
 
     @Override
