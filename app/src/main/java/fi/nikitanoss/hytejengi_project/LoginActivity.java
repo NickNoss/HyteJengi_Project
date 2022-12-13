@@ -17,15 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
  * @version 1.0.0 12/2022
  */
 public class LoginActivity extends AppCompatActivity {
-    
     EditText username, password;
     Button login, register;
     SharedPreferences preferences;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -34,8 +31,10 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.loginButton);
         register = findViewById(R.id.register);
 
+
         preferences = getSharedPreferences("Userinfo", 0);
 
+        //making new eventListener and checking if user already exist, if it exitst it lets user to login
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
+
                     Toast.makeText(LoginActivity.this, "Username or password incorrect", Toast.LENGTH_SHORT).show();
                 }
             }

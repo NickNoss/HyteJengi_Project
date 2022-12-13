@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity{
     private Integer stepCount = 0;
     //end
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +59,11 @@ public class MainActivity extends AppCompatActivity{
 
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
         Intent menuIntent = new Intent(MainActivity.this, NavigationActivity.class);
+
+        /**
+         * Pressing menuButton moves user to new activity
+         * @OnClick starts new activity
+         */
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +102,7 @@ public class MainActivity extends AppCompatActivity{
                 }
 
         });
-        // STEPCOUNTER
+        // Stepcounter
         textView = findViewById(R.id.steps);
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -129,7 +133,6 @@ public class MainActivity extends AppCompatActivity{
         sensorManager.registerListener(stepDetector, sensor, SensorManager.SENSOR_DELAY_NORMAL);
         //end
     }
-
 
     private void startTimer() {
         timerTask = new TimerTask() {
@@ -166,7 +169,6 @@ public class MainActivity extends AppCompatActivity{
         return String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
     }
 
-
     protected void onPause() {
         super.onPause();
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
@@ -176,8 +178,6 @@ public class MainActivity extends AppCompatActivity{
         editor.apply();
         editor.putInt("CurrentProgress", CurrentProgress);
         editor.apply();
-
-
     }
 
     protected void onStop() {
@@ -189,7 +189,6 @@ public class MainActivity extends AppCompatActivity{
         editor.apply();
         editor.putInt("CurrentProgress", CurrentProgress);
         editor.apply();
-
     }
 
     protected void onResume() {
