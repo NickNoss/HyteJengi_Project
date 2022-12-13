@@ -22,18 +22,18 @@ import java.util.List;
 
 public class NavigationActivity extends AppCompatActivity {
 
+    /** declaring ImageButton variable */
     private ImageButton menuBtn;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-
+        /** Fetching ListView from layout file */
         ListView listView = findViewById(R.id.settingListView);
 
+        /** Adding menu options into ArrayList */
         List<String> settingsList = new ArrayList<>();
         settingsList.add("My Profile");
         settingsList.add("Main");
@@ -44,6 +44,8 @@ public class NavigationActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            /** If statements to choose the right activity user clicks */
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
@@ -61,6 +63,7 @@ public class NavigationActivity extends AppCompatActivity {
             }
         });
 
+        /** Fetching ImageButton from layout setting OnClickListener */
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override

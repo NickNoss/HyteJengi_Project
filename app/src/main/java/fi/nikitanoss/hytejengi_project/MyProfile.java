@@ -111,5 +111,4 @@ public class MyProfile extends AppCompatActivity {
             }
         });
     }
-
 }
