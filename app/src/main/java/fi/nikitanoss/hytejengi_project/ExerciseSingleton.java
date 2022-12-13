@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Singleton class to globally store exercises in an array
  *
- * @author
+ * @author Nikita Nossenko
  * @version 1.0.0 12/2022
  */
 public class ExerciseSingleton {

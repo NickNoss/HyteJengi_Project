@@ -22,7 +22,8 @@ import java.util.TimerTask;
 /**
  * Application main activity.
  *
- * @author
+ * @author Nikita Nossenko
+ * @author Jere Paajaste
  * @version 1.0.0 12/2022
  */
 public class MainActivity extends AppCompatActivity{

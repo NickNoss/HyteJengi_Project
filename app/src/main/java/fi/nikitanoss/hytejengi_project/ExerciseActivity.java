@@ -15,7 +15,8 @@ import java.util.Random;
 /**
  * Application exercise activity.
  *
- * @author
+ * @author Nikita Nossenko
+ * @author Elmo Erla
  * @version 1.0.0 12/2022
  */
 public class ExerciseActivity extends AppCompatActivity {

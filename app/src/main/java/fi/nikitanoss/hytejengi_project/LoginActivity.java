@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Application login activity.
  *
- * @author
+ * @author Jere Paajaste
+ * @author Esa Koskinen
  * @version 1.0.0 12/2022
  */
 public class LoginActivity extends AppCompatActivity {
