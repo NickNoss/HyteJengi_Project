@@ -11,11 +11,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 public class MyProfile extends AppCompatActivity {
+    //declaring variables
     EditText height, weight;
     TextView resulttext, myProfile;
-    String calculation,
-            BMIresult;
+    String calculation, BMIresult;
     Button calculate;
     ImageButton menuBtn;
 
@@ -24,15 +28,29 @@ public class MyProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
+        //finding values for variables from xml
         weight = findViewById(R.id.editWeight);
         height = findViewById(R.id.editHeight);
         resulttext = findViewById(R.id.resultText);
         calculate = findViewById(R.id.bmiButton);
         myProfile = findViewById(R.id.settingsTitle);
 
+        GraphView graph = (GraphView) findViewById(R.id.bmiGV);
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+        double y;
+        for (int x = 0; x < 90; x++) {
+            y = Math.sin(2*x*0.2) - 2*Math.sin(x*0.2);
+            series.appendData(new DataPoint(x, y), true, 90);
+        }
+        graph.addSeries(series);
+
+
+        //setting up shared prefences
         SharedPreferences preferences = getSharedPreferences("Userinfo", 0);
         myProfile.setText("Hello " + preferences.getString("username", "") + "!");
 
+        //setting up button to calculate BMI index
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,14 +74,17 @@ public class MyProfile extends AppCompatActivity {
                     BMIresult = "Obese";
                 }
 
-                calculation = "Result: \n\n" + String.format("%.2f",BMI) + "\n\n" + BMIresult;
+                calculation = "Result: \n\n" + String.format("%.2f", BMI) + "\n\n" + BMIresult;
 
                 resulttext.setText(calculation);
             }
         });
 
+        //declaring and setting up menu navigation button
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
+        //Making new intent for user to move to SettingsActivity from MyProfile
         Intent menuIntent = new Intent(MyProfile.this, SettingsActivity.class);
+        //Moving to said intent with button press
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
