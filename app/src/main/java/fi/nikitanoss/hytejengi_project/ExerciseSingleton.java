@@ -12,8 +12,14 @@ public class ExerciseSingleton {
     private ArrayList<Exercise> exercises;
     private static final ExerciseSingleton ourInstance = new ExerciseSingleton();
 
+
+    /**
+     * Returns instance of singleton class
+     * @return singleton instance
+     */
     public static ExerciseSingleton getInstance() { return ourInstance; }
 
+    //declaring new exercises for our list to show randomly in ExerciseActivity
     private ExerciseSingleton() {
         this.exercises = new ArrayList<Exercise>();
         exercises.add(new Exercise("Push-up", 20, "Get down on all fours, placing your hands slightly wider than your shoulders.\n" +
@@ -64,10 +70,22 @@ public class ExerciseSingleton {
                 "drop your head toward the floor (this is the cat posture). Inhale and lift your head, chest, and tailbone toward the ceiling as you arch your back for cow. Continue this pattern for 5 to 10 breaths."));
     }
 
+    /**
+     * Returns all exercises inside ArrayList
+     * @return exercises
+     */
     public ArrayList<Exercise> getExercises(){ return this.exercises; }
 
+    /**
+     * Returns size of exercise list
+     * @return size of list
+     */
     public int getListSize(){ return exercises.size(); }
 
+    /**
+     * Returns wanted object of class
+     * @return wanted class
+     */
     public Exercise getExercise(int i) { return exercises.get(i); }
 
 }

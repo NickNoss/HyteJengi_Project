@@ -24,7 +24,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private Button  readyBtn;
     private ImageButton menuBtn;
 
-    //
+    //making random number generator
     private int random = new Random().nextInt(12); // randomizer initialization
 
     @Override
@@ -42,12 +42,12 @@ public class ExerciseActivity extends AppCompatActivity {
         String reps = ExerciseSingleton.getInstance().getExercise(random).getReps();
         String info = ExerciseSingleton.getInstance().getExercise(random).getInstructions();
 
-        // setting exercises to show on screen
+        //setting exercises to show on screen
         nameTV.setText(name);
         repsTV.setText(reps);
         infoTV.setText(info);
 
-        // Get back to main after exercise
+        //Get back to main after exercise
         Intent mainIntent = new Intent(this, MainActivity.class);
         readyBtn = findViewById(R.id.rdyBtn);
         readyBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +57,9 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * declaring new intent to move to new activity when menuButton is pressed
+         */
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
         Intent menuIntent = new Intent(ExerciseActivity.this, NavigationActivity.class);
         menuBtn.setOnClickListener(new View.OnClickListener() {

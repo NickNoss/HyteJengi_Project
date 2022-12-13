@@ -24,13 +24,10 @@ public class NavigationActivity extends AppCompatActivity {
 
     private ImageButton menuBtn;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
 
         ListView listView = findViewById(R.id.settingListView);
 

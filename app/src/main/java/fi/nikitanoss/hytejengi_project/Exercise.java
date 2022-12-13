@@ -13,12 +13,18 @@ public class Exercise {
 
     public Exercise(String name) { this.name = name; }
 
+    /**
+     * Constructor for Exercise class
+     */
+
     public Exercise(String name, int reps, String instructions) {
         this.name = name;
         this.reps = reps;
         this.instructions = instructions;
     }
-
+    /**
+     * Getter methods for exercise class
+     */
     public String getName() { return "Name: " + name; }
 
     public String toString() { return name + "\nReps: " + reps; }
