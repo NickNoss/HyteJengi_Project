@@ -35,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("Userinfo", 0);
 
-        //making new eventListener and checking if user already exist, if it exitst it lets user to login
+        /**
+         * Making new eventListener and checking if user already exist, if it exists it lets user to login
+         */
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Starting next activity on button press.
+         */
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

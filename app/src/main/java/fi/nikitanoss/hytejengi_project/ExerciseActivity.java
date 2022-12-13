@@ -58,7 +58,7 @@ public class ExerciseActivity extends AppCompatActivity {
         });
 
         /**
-         * declaring new intent to move to new activity when menuButton is pressed
+         * Declaring new intent to move to new activity when menuButton is pressed
          */
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
         Intent menuIntent = new Intent(ExerciseActivity.this, NavigationActivity.class);
