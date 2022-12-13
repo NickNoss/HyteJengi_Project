@@ -45,7 +45,13 @@ public class NavigationActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            /** If statements to choose the right activity user clicks */
+            /**
+             * if statements to choose the right activity
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
@@ -63,7 +69,8 @@ public class NavigationActivity extends AppCompatActivity {
             }
         });
 
-        /** Fetching ImageButton from layout setting OnClickListener */
+        /** Fetching ImageButton from layout setting OnClickListener
+         * @onClick starts a new activity */
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
