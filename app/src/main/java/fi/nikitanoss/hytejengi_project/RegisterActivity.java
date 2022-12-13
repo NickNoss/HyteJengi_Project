@@ -18,8 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText username, password;
-    Button register, cancel;
+    private EditText username, password;
+    private Button register, cancel;
 
     SharedPreferences preferences;
 
@@ -34,6 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
         cancel = findViewById(R.id.cancelButton);
 
         preferences = getSharedPreferences("Userinfo", 0);
+        /**
+         * Sets onClick function for register button which saves username and password to sharedpreferences.
+         */
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +56,9 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-
+        /**
+         * sets onClick function to cancel button which opens LoginActivity when button is clicked.
+         */
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
