@@ -27,12 +27,12 @@ import java.util.ArrayList;
  */
 public class MyProfile extends AppCompatActivity {
     //declaring variables
-    EditText height, weight;
-    TextView resulttext, myProfile;
-    String calculation, BMIresult;
-    Button calculate;
-    ImageButton menuBtn;
-    ArrayList<Double> bmiArray = new ArrayList<Double>();
+    private EditText height, weight;
+    private TextView resulttext, myProfile;
+    private String calculation, BMIresult;
+    private Button calculate;
+    private ImageButton menuBtn;
+    private ArrayList<Double> bmiArray = new ArrayList<Double>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,14 @@ public class MyProfile extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("Userinfo", 0);
         myProfile.setText("Hello " + preferences.getString("username", "") + "!");
 
-        //setting up button to calculate BMI index
+        /**
+         * Sets onClick function for calculate button to calculate BMI, print it on the screen and setup GraphView.
+         */
         calculate.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view Creates text on screen.
+             */
             @Override
             public void onClick(View view) {
                 String S1 = weight.getText().toString();

@@ -62,11 +62,6 @@ public class NavigationActivity extends AppCompatActivity {
         });
 
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
-        menuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        menuBtn.setOnClickListener(v -> finish());
     }
 }
