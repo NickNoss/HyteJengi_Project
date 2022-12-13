@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Settings"
+        android:text="Menu"
         android:textColor="#673AB7"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

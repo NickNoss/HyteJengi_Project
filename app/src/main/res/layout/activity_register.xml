@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:onClick="loginButtonPressed"
-        android:text="Cancel"
+        android:text="Back"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
