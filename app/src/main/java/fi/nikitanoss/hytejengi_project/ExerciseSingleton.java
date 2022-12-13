@@ -2,6 +2,12 @@ package fi.nikitanoss.hytejengi_project;
 
 import java.util.ArrayList;
 
+/**
+ * Singleton class to globally store exercises in an array
+ *
+ * @author
+ * @version 1.0.0 12/2022
+ */
 public class ExerciseSingleton {
     private ArrayList<Exercise> exercises;
     private static final ExerciseSingleton ourInstance = new ExerciseSingleton();

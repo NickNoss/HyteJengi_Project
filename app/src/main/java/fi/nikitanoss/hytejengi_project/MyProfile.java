@@ -15,6 +15,14 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.ArrayList;
+
+/**
+ * Application profile page activity.
+ *
+ * @author
+ * @version 1.0.0 12/2022
+ */
 public class MyProfile extends AppCompatActivity {
     //declaring variables
     EditText height, weight;
@@ -22,6 +30,7 @@ public class MyProfile extends AppCompatActivity {
     String calculation, BMIresult;
     Button calculate;
     ImageButton menuBtn;
+    ArrayList<Double> bmiArray = new ArrayList<Double>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +43,6 @@ public class MyProfile extends AppCompatActivity {
         resulttext = findViewById(R.id.resultText);
         calculate = findViewById(R.id.bmiButton);
         myProfile = findViewById(R.id.settingsTitle);
-
-        GraphView graph = (GraphView) findViewById(R.id.bmiGV);
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
-        double y;
-        for (int x = 0; x < 90; x++) {
-            y = Math.sin(2*x*0.2) - 2*Math.sin(x*0.2);
-            series.appendData(new DataPoint(x, y), true, 90);
-        }
-        graph.addSeries(series);
-
 
         //setting up shared prefences
         SharedPreferences preferences = getSharedPreferences("Userinfo", 0);
@@ -61,6 +59,25 @@ public class MyProfile extends AppCompatActivity {
                 double heightValue = Double.parseDouble(S2) * 0.01;
 
                 double BMI = weightValue / (heightValue * heightValue);
+                bmiArray.add(BMI);
+                GraphView graph = (GraphView) findViewById(R.id.bmiGV);
+
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+                double y;
+                for (int x = 0; x < bmiArray.size(); x++) {
+                    y = bmiArray.get(x);
+                    series.appendData(new DataPoint(x, y), true, bmiArray.size());
+                }
+                graph.addSeries(series);
+
+                graph.getViewport().setXAxisBoundsManual(true);
+                graph.getViewport().setMinX(0);
+                graph.getViewport().setMaxX(bmiArray.size());
+
+                graph.getViewport().setScrollable(true);
+                graph.getViewport().setScalable(true);
+
+
 
                 if (BMI < 16) {
                     BMIresult = "Severe Thinness";
@@ -83,7 +100,7 @@ public class MyProfile extends AppCompatActivity {
         //declaring and setting up menu navigation button
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
         //Making new intent for user to move to SettingsActivity from MyProfile
-        Intent menuIntent = new Intent(MyProfile.this, SettingsActivity.class);
+        Intent menuIntent = new Intent(MyProfile.this, NavigationActivity.class);
         //Moving to said intent with button press
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,7 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SettingsActivity extends AppCompatActivity {
+/**
+ * Application navigation activity.
+ *
+ * @author
+ * @version 1.0.0 12/2022
+ */
+
+public class NavigationActivity extends AppCompatActivity {
 
     private ImageButton menuBtn;
 
@@ -40,16 +47,16 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
-                    startActivity(new Intent(SettingsActivity.this, MyProfile.class));
+                    startActivity(new Intent(NavigationActivity.this, MyProfile.class));
                 } else if(position==1){
-                    Intent openMainActivity = new Intent(SettingsActivity.this, MainActivity.class);
+                    Intent openMainActivity = new Intent(NavigationActivity.this, MainActivity.class);
                     openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivityIfNeeded(openMainActivity, 0);
                 } else if(position==2){
-                    startActivity(new Intent(SettingsActivity.this, ExerciseActivity.class));
+                    startActivity(new Intent(NavigationActivity.this, ExerciseActivity.class));
 
                 } else {
-                    startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
+                    startActivity(new Intent(NavigationActivity.this, LoginActivity.class));
                 }
             }
         });

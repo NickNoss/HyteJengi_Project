@@ -10,6 +10,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Application login activity.
+ *
+ * @author
+ * @version 1.0.0 12/2022
+ */
 public class LoginActivity extends AppCompatActivity {
     
     EditText username, password;

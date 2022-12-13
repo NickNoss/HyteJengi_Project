@@ -19,6 +19,12 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Application main activity.
+ *
+ * @author
+ * @version 1.0.0 12/2022
+ */
 public class MainActivity extends AppCompatActivity{
 
     // menu button
@@ -53,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
-        Intent menuIntent = new Intent(MainActivity.this, SettingsActivity.class);
+        Intent menuIntent = new Intent(MainActivity.this, NavigationActivity.class);
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

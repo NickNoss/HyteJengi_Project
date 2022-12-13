@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
+/**
+ * Application exercise activity.
+ *
+ * @author
+ * @version 1.0.0 12/2022
+ */
 public class ExerciseActivity extends AppCompatActivity {
 
     private Button  readyBtn;
@@ -50,7 +56,7 @@ public class ExerciseActivity extends AppCompatActivity {
         });
 
         menuBtn = (ImageButton) findViewById(R.id.menuBtn);
-        Intent menuIntent = new Intent(ExerciseActivity.this, SettingsActivity.class);
+        Intent menuIntent = new Intent(ExerciseActivity.this, NavigationActivity.class);
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,12 @@
 package fi.nikitanoss.hytejengi_project;
 
+/**
+ * Object class for exercises.
+ *
+ * @author
+ * @version 1.0.0 12/2022
+ */
+
 public class Exercise {
     private String name, instructions;
     private int reps;
