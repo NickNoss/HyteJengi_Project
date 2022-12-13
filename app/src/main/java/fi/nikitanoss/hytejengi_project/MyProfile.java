@@ -14,7 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MyProfile extends AppCompatActivity {
     EditText height, weight;
     TextView resulttext, myProfile;
-    String calculation, BMIresult;
+    String calculation,
+            BMIresult;
     Button calculate;
     ImageButton menuBtn;
 
@@ -55,7 +56,7 @@ public class MyProfile extends AppCompatActivity {
                     BMIresult = "Obese";
                 }
 
-                calculation = "Result: \n\n" + BMI + "\n" + BMIresult;
+                calculation = "Result: \n\n" + String.format("%.2f",BMI) + "\n\n" + BMIresult;
 
                 resulttext.setText(calculation);
             }

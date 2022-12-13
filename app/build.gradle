@@ -42,6 +42,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'org.decimal4j:decimal4j:1.0.3'
 
     //for OkHttps
     implementation 'com.squareup.okhttp3:okhttp:3.0.1'
