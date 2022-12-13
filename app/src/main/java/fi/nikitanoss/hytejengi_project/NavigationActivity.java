@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Application navigation activity.
  *
- * @author
+ * @author Esa Koskinen
  * @version 1.0.0 12/2022
  */
 

@@ -3,7 +3,7 @@ package fi.nikitanoss.hytejengi_project;
 /**
  * Object class for exercises.
  *
- * @author
+ * @author Elmo Erla
  * @version 1.0.0 12/2022
  */
 

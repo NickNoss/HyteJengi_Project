@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Application user registration activity.
  *
- * @author
+ * @author Jere Paajaste
  * @version 1.0.0 12/2022
  */
 

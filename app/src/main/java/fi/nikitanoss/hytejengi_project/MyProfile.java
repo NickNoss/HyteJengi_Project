@@ -20,7 +20,9 @@ import java.util.ArrayList;
 /**
  * Application profile page activity.
  *
- * @author
+ * @author Esa Koskinen
+ * @author Nikita Nossenko
+ * @author Elmo Erla
  * @version 1.0.0 12/2022
  */
 public class MyProfile extends AppCompatActivity {
