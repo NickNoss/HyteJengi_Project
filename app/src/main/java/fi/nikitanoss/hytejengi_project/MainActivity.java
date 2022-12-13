@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity{
     private TextView textView;
     private double MagnitudePrev = 0;
     private Integer stepCount = 0;
-    //end
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
